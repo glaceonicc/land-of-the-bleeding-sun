@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bh4mtn3lielhy"]
+
+[ext_resource type="Texture2D" uid="uid://dnhq8gngyavra" path="res://attack.png" id="1_r3oah"]
+[ext_resource type="Script" uid="uid://dmh4yaj4v1xxv" path="res://action_button.gd" id="2_iievj"]
+
+[node name="Button" type="Button" unique_id=1512289011]
+offset_left = -29.0
+offset_top = -29.0
+offset_right = 29.0
+offset_bottom = 29.0
+icon = ExtResource("1_r3oah")
+script = ExtResource("2_iievj")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

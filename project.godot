@@ -23,8 +23,9 @@ items="*uid://b8lumhifu6p5c"
 
 window/size/viewport_width=960
 window/size/viewport_height=540
-window/size/mode=2
-window/stretch/mode="canvas_items"
+window/size/mode=3
+window/size/initial_position_type=0
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [input]
