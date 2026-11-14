@@ -1,18 +1,7 @@
 [gd_scene format=3 uid="uid://bey501p0y6vtg"]
 
 [ext_resource type="Script" uid="uid://wc0sf7n71jg5" path="res://ally.gd" id="1_0mrcl"]
-[ext_resource type="Texture2D" uid="uid://b86hvuxgg1fpy" path="res://lemon.png" id="1_ikv81"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_ikv81")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://wkb14w7v1thy" path="res://area.png" id="3_bgssa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 23.0
@@ -23,11 +12,21 @@ radius = 31.144823
 [sub_resource type="CircleShape2D" id="CircleShape2D_57qmd"]
 radius = 32.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bgssa")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="ally" type="CharacterBody2D" unique_id=1273971991]
 script = ExtResource("1_0mrcl")
 
-[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=667972911]
-sprite_frames = SubResource("SpriteFrames_g4v7s")
+[node name="sprite" type="Sprite2D" parent="." unique_id=2094792557]
 
 [node name="hitbox" type="CollisionShape2D" parent="." unique_id=1743566028]
 shape = SubResource("CircleShape2D_g4v7s")
@@ -45,3 +44,6 @@ collision_mask = 2
 [node name="hitbox" type="CollisionShape2D" parent="aim" unique_id=2013850829]
 shape = SubResource("CircleShape2D_57qmd")
 debug_color = Color(0.9575363, 4.813075e-07, 0.5346579, 0.41960785)
+
+[node name="sprite" type="AnimatedSprite2D" parent="aim" unique_id=94560167]
+sprite_frames = SubResource("SpriteFrames_yf5fn")

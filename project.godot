@@ -16,8 +16,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-gl="*uid://8bvglm7rn84d"
+allies="*uid://dhp5hb7ah2lqn"
 items="*uid://b8lumhifu6p5c"
+gl="*uid://8bvglm7rn84d"
 
 [display]
 

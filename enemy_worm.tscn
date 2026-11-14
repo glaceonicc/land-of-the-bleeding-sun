@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bva2jskq36dxp"]
+
+[ext_resource type="Texture2D" uid="uid://3o3a22f65jr1" path="res://enemy/openworm.png" id="1_qlrv5"]
+[ext_resource type="Script" uid="uid://3h17aqqicodi" path="res://enemy.gd" id="1_rl7eq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qlrv5")
+}],
+"loop": 1,
+"name": &"openworm",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 18.027756
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 22.203604
+
+[node name="enemy" type="StaticBody2D" unique_id=1590059883]
+script = ExtResource("1_rl7eq")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=890706742]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"openworm"
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=854537685]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="die_area" type="Area2D" parent="." unique_id=1632031376]
+
+[node name="htibox" type="CollisionShape2D" parent="die_area" unique_id=387361051]
+shape = SubResource("CircleShape2D_yf5fn")
+debug_color = Color(0.5659202, 0.5079052, 0.62807155, 0.41960785)

@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://54axlo7lcj0h"]
 
 [ext_resource type="Script" uid="uid://jxuix5wsf2yq" path="res://battle.gd" id="1_7sfm4"]
-[ext_resource type="PackedScene" uid="uid://bey501p0y6vtg" path="res://ally.tscn" id="1_ip7xm"]
 [ext_resource type="Script" uid="uid://qjb0ef4h03lr" path="res://area_mouse.gd" id="2_oxp8w"]
 [ext_resource type="PackedScene" uid="uid://bh4mtn3lielhy" path="res://action_button.tscn" id="4_6t8i5"]
 [ext_resource type="Texture2D" uid="uid://l5udwtm62yij" path="res://defend.png" id="5_0npn6"]
+[ext_resource type="Texture2D" uid="uid://b86hvuxgg1fpy" path="res://allies/lemon.png" id="6_dw4jg"]
 [ext_resource type="Texture2D" uid="uid://cbi700wy2y2wo" path="res://bounce.png" id="6_mhv3b"]
+[ext_resource type="PackedScene" uid="uid://bva2jskq36dxp" path="res://enemy_worm.tscn" id="7_0npn6"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_g4v7s"]
 points = PackedVector2Array(-95, -192, 102, -192, 192, -93, 193, 92, 108, 192, -101, 192, -199, 97, -194, -100)
@@ -45,16 +46,6 @@ script = ExtResource("2_oxp8w")
 
 [node name="hitbox" type="CollisionShape2D" parent="mouse" unique_id=1559881632]
 shape = SubResource("ConvexPolygonShape2D_g4v7s")
-
-[node name="ally" parent="." unique_id=1832760700 instance=ExtResource("1_ip7xm")]
-position = Vector2(421, 239)
-id = 1
-
-[node name="ally2" parent="." unique_id=1427924156 instance=ExtResource("1_ip7xm")]
-position = Vector2(520, 242)
-
-[node name="ally3" parent="." unique_id=135383783 instance=ExtResource("1_ip7xm")]
-position = Vector2(464, 297)
 
 [node name="wallcollision" type="StaticBody2D" parent="." unique_id=1964425600]
 position = Vector2(455, 270)
@@ -110,164 +101,172 @@ scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_mhv3b")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
-[node name="a1" parent="." unique_id=1512289011 instance=ExtResource("4_6t8i5")]
-offset_left = 3.0
-offset_top = 46.0
-offset_right = 61.0
-offset_bottom = 104.0
-buttontype = "a"
-id = 1
-
-[node name="Label" type="Label" parent="." unique_id=909799211]
-offset_left = 4.0
-offset_top = 11.0
-offset_right = 44.0
-offset_bottom = 34.0
-text = "ally"
-metadata/_edit_use_anchors_ = true
-
-[node name="Label3" type="Label" parent="." unique_id=105582918]
-anchors_preset = -1
-anchor_left = -0.15
-anchor_top = 5.0869565
-anchor_right = -0.15
-anchor_bottom = 5.0869565
-offset_left = 9.0
-offset_top = 292.0
-offset_right = 49.0
-offset_bottom = 315.0
-text = "ally"
-metadata/_edit_use_anchors_ = true
-
-[node name="Label4" type="Label" parent="." unique_id=355947241]
-anchors_preset = -1
-anchor_left = -0.15
-anchor_top = 5.0869565
-anchor_right = -0.15
-anchor_bottom = 5.0869565
-offset_left = 4.0
-offset_top = 418.0
-offset_right = 44.0
-offset_bottom = 441.0
-text = "ally"
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="." unique_id=196220786]
-anchors_preset = -1
-anchor_left = 0.025
-anchor_top = 4.521739
-anchor_right = 0.025
-anchor_bottom = 4.521739
-offset_left = 10.0
-offset_top = 145.0
-offset_right = 50.0
-offset_bottom = 168.0
-text = "ally"
-metadata/_edit_use_anchors_ = true
-
-[node name="Button" parent="." unique_id=1811630541 instance=ExtResource("4_6t8i5")]
-offset_left = 65.0
-offset_top = 45.0
-offset_right = 123.0
-offset_bottom = 103.0
-icon = ExtResource("5_0npn6")
-buttontype = "d"
-id = 1
-
-[node name="Button2" parent="." unique_id=1514148083 instance=ExtResource("4_6t8i5")]
-offset_left = 126.0
-offset_top = 46.0
-offset_right = 184.0
-offset_bottom = 104.0
-icon = ExtResource("6_mhv3b")
-buttontype = "b"
-id = 1
-
-[node name="a2" parent="." unique_id=1857210758 instance=ExtResource("4_6t8i5")]
-offset_left = 0.0
-offset_top = 196.0
-offset_right = 58.0
-offset_bottom = 254.0
-buttontype = "a"
-id = 2
-
-[node name="Button3" parent="." unique_id=1858095319 instance=ExtResource("4_6t8i5")]
-offset_left = 62.0
-offset_top = 195.0
-offset_right = 120.0
-offset_bottom = 253.0
-icon = ExtResource("5_0npn6")
-buttontype = "d"
-id = 2
-
-[node name="Button4" parent="." unique_id=1540275016 instance=ExtResource("4_6t8i5")]
-offset_left = 123.0
-offset_top = 196.0
-offset_right = 181.0
-offset_bottom = 254.0
-icon = ExtResource("6_mhv3b")
-buttontype = "b"
-id = 2
-
-[node name="a3" parent="." unique_id=310475047 instance=ExtResource("4_6t8i5")]
-offset_left = 5.0
-offset_top = 344.0
-offset_right = 63.0
-offset_bottom = 402.0
-buttontype = "a"
-id = 3
-
-[node name="Button5" parent="." unique_id=147995864 instance=ExtResource("4_6t8i5")]
-offset_left = 67.0
-offset_top = 343.0
-offset_right = 125.0
-offset_bottom = 401.0
-icon = ExtResource("5_0npn6")
-buttontype = "d"
-id = 3
-
-[node name="Button6" parent="." unique_id=1520183573 instance=ExtResource("4_6t8i5")]
-offset_left = 128.0
-offset_top = 344.0
-offset_right = 186.0
-offset_bottom = 402.0
-icon = ExtResource("6_mhv3b")
-buttontype = "b"
-id = 3
-
-[node name="a4" parent="." unique_id=301593077 instance=ExtResource("4_6t8i5")]
-offset_left = 3.0
-offset_top = 449.0
-offset_right = 61.0
-offset_bottom = 507.0
-buttontype = "a"
-id = 4
-
-[node name="Button7" parent="." unique_id=813181824 instance=ExtResource("4_6t8i5")]
-offset_left = 65.0
-offset_top = 448.0
-offset_right = 123.0
-offset_bottom = 506.0
-icon = ExtResource("5_0npn6")
-buttontype = "d"
-id = 4
-
-[node name="Button8" parent="." unique_id=1182174381 instance=ExtResource("4_6t8i5")]
-offset_left = 126.0
-offset_top = 449.0
-offset_right = 184.0
-offset_bottom = 507.0
-icon = ExtResource("6_mhv3b")
-buttontype = "b"
-id = 4
-
 [node name="Defend" type="Sprite2D" parent="." unique_id=1720819443]
 position = Vector2(936, 259)
 texture = ExtResource("5_0npn6")
 
-[node name="Defend2" type="Sprite2D" parent="." unique_id=41169033]
-position = Vector2(995, 255)
-texture = ExtResource("5_0npn6")
+[node name="ally1m" type="Node2D" parent="." unique_id=276674567]
+
+[node name="name1" type="Label" parent="ally1m" unique_id=909799211]
+offset_left = 66.0
+offset_top = 18.0
+offset_right = 106.0
+offset_bottom = 41.0
+text = "ally"
+metadata/_edit_use_anchors_ = true
+
+[node name="a1" parent="ally1m" unique_id=1512289011 instance=ExtResource("4_6t8i5")]
+offset_left = 2.0
+offset_top = 63.0
+offset_right = 60.0
+offset_bottom = 121.0
+buttontype = "a"
+id = 1
+
+[node name="d1" parent="ally1m" unique_id=1811630541 instance=ExtResource("4_6t8i5")]
+offset_left = 65.0
+offset_top = 62.0
+offset_right = 123.0
+offset_bottom = 120.0
+icon = ExtResource("5_0npn6")
+buttontype = "d"
+id = 1
+
+[node name="b1" parent="ally1m" unique_id=1514148083 instance=ExtResource("4_6t8i5")]
+offset_left = 125.0
+offset_top = 64.0
+offset_right = 183.0
+offset_bottom = 122.0
+icon = ExtResource("6_mhv3b")
+buttontype = "b"
+id = 1
+
+[node name="icon1" type="Sprite2D" parent="ally1m" unique_id=680117819]
+position = Vector2(30, 31)
+texture = ExtResource("6_dw4jg")
+
+[node name="ally2m" type="Node2D" parent="." unique_id=654359492]
+
+[node name="name2" type="Label" parent="ally2m" unique_id=2130253157]
+offset_left = 66.0
+offset_top = 139.0
+offset_right = 106.0
+offset_bottom = 162.0
+text = "ally"
+metadata/_edit_use_anchors_ = true
+
+[node name="a2" parent="ally2m" unique_id=728372244 instance=ExtResource("4_6t8i5")]
+offset_left = 2.0
+offset_top = 184.0
+offset_right = 60.0
+offset_bottom = 242.0
+buttontype = "a"
+id = 2
+
+[node name="d2" parent="ally2m" unique_id=365833872 instance=ExtResource("4_6t8i5")]
+offset_left = 65.0
+offset_top = 183.0
+offset_right = 123.0
+offset_bottom = 241.0
+icon = ExtResource("5_0npn6")
+buttontype = "d"
+id = 2
+
+[node name="b2" parent="ally2m" unique_id=2120827134 instance=ExtResource("4_6t8i5")]
+offset_left = 125.0
+offset_top = 185.0
+offset_right = 183.0
+offset_bottom = 243.0
+icon = ExtResource("6_mhv3b")
+buttontype = "b"
+id = 2
+
+[node name="icon2" type="Sprite2D" parent="ally2m" unique_id=614049074]
+position = Vector2(30, 152)
+texture = ExtResource("6_dw4jg")
+
+[node name="ally3m" type="Node2D" parent="." unique_id=2042021850]
+
+[node name="name3" type="Label" parent="ally3m" unique_id=1504038022]
+offset_left = 67.0
+offset_top = 259.0
+offset_right = 107.0
+offset_bottom = 282.0
+text = "ally"
+metadata/_edit_use_anchors_ = true
+
+[node name="a3" parent="ally3m" unique_id=760634920 instance=ExtResource("4_6t8i5")]
+offset_left = 3.0
+offset_top = 304.0
+offset_right = 61.0
+offset_bottom = 362.0
+buttontype = "a"
+id = 3
+
+[node name="d3" parent="ally3m" unique_id=671372103 instance=ExtResource("4_6t8i5")]
+offset_left = 66.0
+offset_top = 303.0
+offset_right = 124.0
+offset_bottom = 361.0
+icon = ExtResource("5_0npn6")
+buttontype = "d"
+id = 3
+
+[node name="b3" parent="ally3m" unique_id=1912489217 instance=ExtResource("4_6t8i5")]
+offset_left = 126.0
+offset_top = 305.0
+offset_right = 184.0
+offset_bottom = 363.0
+icon = ExtResource("6_mhv3b")
+buttontype = "b"
+id = 3
+
+[node name="icon3" type="Sprite2D" parent="ally3m" unique_id=1069220140]
+position = Vector2(31, 272)
+texture = ExtResource("6_dw4jg")
+
+[node name="ally4m" type="Node2D" parent="." unique_id=99426130]
+
+[node name="name4" type="Label" parent="ally4m" unique_id=1226988516]
+offset_left = 68.0
+offset_top = 379.0
+offset_right = 108.0
+offset_bottom = 402.0
+text = "ally"
+metadata/_edit_use_anchors_ = true
+
+[node name="a4" parent="ally4m" unique_id=1877492549 instance=ExtResource("4_6t8i5")]
+offset_left = 4.0
+offset_top = 424.0
+offset_right = 62.0
+offset_bottom = 482.0
+buttontype = "a"
+id = 4
+
+[node name="d4" parent="ally4m" unique_id=1579269070 instance=ExtResource("4_6t8i5")]
+offset_left = 67.0
+offset_top = 423.0
+offset_right = 125.0
+offset_bottom = 481.0
+icon = ExtResource("5_0npn6")
+buttontype = "d"
+id = 4
+
+[node name="b4" parent="ally4m" unique_id=973943480 instance=ExtResource("4_6t8i5")]
+offset_left = 127.0
+offset_top = 425.0
+offset_right = 185.0
+offset_bottom = 483.0
+icon = ExtResource("6_mhv3b")
+buttontype = "b"
+id = 4
+
+[node name="icon4" type="Sprite2D" parent="ally4m" unique_id=290019576]
+position = Vector2(32, 392)
+texture = ExtResource("6_dw4jg")
+
+[node name="enemy" parent="." unique_id=1590059883 instance=ExtResource("7_0npn6")]
+position = Vector2(330, 242)
 
 [connection signal="mouse_entered" from="mouse" to="mouse" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="mouse" to="mouse" method="_on_mouse_exited"]
