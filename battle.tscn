@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://54axlo7lcj0h"]
+
+[ext_resource type="Script" uid="uid://jxuix5wsf2yq" path="res://battle.gd" id="1_7sfm4"]
+[ext_resource type="PackedScene" uid="uid://bey501p0y6vtg" path="res://ally.tscn" id="1_ip7xm"]
+[ext_resource type="Script" uid="uid://qjb0ef4h03lr" path="res://area_mouse.gd" id="2_oxp8w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yf5fn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(364, 88.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxp8w"]
+size = Vector2(148, 406.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7sfm4"]
+size = Vector2(148, 406.25)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_g4v7s"]
+points = PackedVector2Array(-95, -192, 102, -192, 192, -93, 193, 92, 108, 192, -101, 192, -199, 97, -194, -100)
+
+[node name="battle" type="Node2D" unique_id=2068602757]
+script = ExtResource("1_7sfm4")
+
+[node name="ally" parent="." unique_id=1832760700 instance=ExtResource("1_ip7xm")]
+position = Vector2(421, 239)
+
+[node name="ally2" parent="." unique_id=1427924156 instance=ExtResource("1_ip7xm")]
+position = Vector2(520, 242)
+
+[node name="ally3" parent="." unique_id=135383783 instance=ExtResource("1_ip7xm")]
+position = Vector2(464, 297)
+
+[node name="wallcollision" type="StaticBody2D" parent="." unique_id=1964425600]
+position = Vector2(455, 270)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_yf5fn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallcollision" unique_id=1759382419]
+position = Vector2(0, -260)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="wallcollision" unique_id=439228431]
+position = Vector2(0, 260)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="wallcollision" unique_id=1934514722]
+position = Vector2(-290, 0)
+shape = SubResource("RectangleShape2D_oxp8w")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="wallcollision" unique_id=579845089]
+position = Vector2(290, 0)
+shape = SubResource("RectangleShape2D_7sfm4")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="wallcollision" unique_id=289575186]
+position = Vector2(211, 216.00006)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_7sfm4")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="wallcollision" unique_id=1169141760]
+position = Vector2(-211, -216)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_7sfm4")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="wallcollision" unique_id=1341388353]
+position = Vector2(211, -216)
+rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_7sfm4")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="wallcollision" unique_id=1009256608]
+position = Vector2(-211, 216)
+rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_7sfm4")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="mouse" type="Area2D" parent="." unique_id=909140761]
+position = Vector2(455, 270)
+script = ExtResource("2_oxp8w")
+
+[node name="hitbox" type="CollisionShape2D" parent="mouse" unique_id=1559881632]
+shape = SubResource("ConvexPolygonShape2D_g4v7s")
+
+[connection signal="mouse_entered" from="mouse" to="mouse" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="mouse" to="mouse" method="_on_mouse_exited"]
