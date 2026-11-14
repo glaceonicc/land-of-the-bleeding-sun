@@ -7,6 +7,9 @@ var allyscene = load("res://ally.tscn")
 func _ready() -> void:
 	gl.STATE = "pick1"
 	gl.allyID = 1
+	gl.connect("addlog", addlog)
+	
+	
 	
 	if gl.allycount == 4:
 		$ally4m.visible = true
@@ -56,6 +59,23 @@ func _ready() -> void:
 		$ally1m.visible = false
 
 func _process(delta: float) -> void:
-	if gl.allyID > gl.allycount:
-		pass
+	if gl.allyID > gl.allycount and gl.current == 0:
+		gl.STATE = "allies"
+		gl.current = 1
+		gl.emit_signal("proceed")
 	
+	$ally1m/hpbar1.max_value = gl.maxhp1
+	$ally2m/hpbar2.max_value = gl.maxhp2
+	$ally3m/hpbar3.max_value = gl.maxhp3
+	$ally4m/hpbar4.max_value = gl.maxhp4
+	
+	$ally1m/hpbar1.value = gl.hp1
+	$ally2m/hpbar2.value = gl.hp2
+	$ally3m/hpbar3.value = gl.hp3
+	$ally4m/hpbar4.value = gl.hp4
+
+func addlog(text):
+	var logz = Label.new()
+	logz.text = text
+	logz.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	$ScrollContainer/VBoxContainer.add_child(logz)

@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://3o3a22f65jr1" path="res://enemy/openworm.png" id="1_qlrv5"]
 [ext_resource type="Script" uid="uid://3h17aqqicodi" path="res://enemy.gd" id="1_rl7eq"]
+[ext_resource type="Texture2D" uid="uid://4r52bcrcemlo" path="res://bg/dark.png" id="3_7hhje"]
+[ext_resource type="Texture2D" uid="uid://um2o0dfl2r7h" path="res://bg/light.png" id="4_yniyr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -35,3 +37,15 @@ shape = SubResource("CircleShape2D_g4v7s")
 [node name="htibox" type="CollisionShape2D" parent="die_area" unique_id=387361051]
 shape = SubResource("CircleShape2D_yf5fn")
 debug_color = Color(0.5659202, 0.5079052, 0.62807155, 0.41960785)
+
+[node name="hpbar" type="TextureProgressBar" parent="." unique_id=638743069]
+offset_left = -18.0
+offset_top = -34.0
+offset_right = 18.0
+offset_bottom = -25.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_7hhje")
+texture_progress = ExtResource("4_yniyr")
+
+[connection signal="area_entered" from="die_area" to="." method="_on_die_area_area_entered"]
+[connection signal="area_exited" from="die_area" to="." method="_on_die_area_area_exited"]

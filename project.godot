@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="land-of-the-bleeding-sun"
+run/main_scene="uid://54axlo7lcj0h"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -28,6 +29,10 @@ window/size/mode=3
 window/size/initial_position_type=0
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[global_group]
+
+allies=""
 
 [input]
 

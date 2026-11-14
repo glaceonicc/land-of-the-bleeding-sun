@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://54axlo7lcj0h"]
 
 [ext_resource type="Script" uid="uid://jxuix5wsf2yq" path="res://battle.gd" id="1_7sfm4"]
+[ext_resource type="Texture2D" uid="uid://cep3vevpsn87n" path="res://bg/cave.png" id="2_mhv3b"]
 [ext_resource type="Script" uid="uid://qjb0ef4h03lr" path="res://area_mouse.gd" id="2_oxp8w"]
 [ext_resource type="PackedScene" uid="uid://bh4mtn3lielhy" path="res://action_button.tscn" id="4_6t8i5"]
 [ext_resource type="Texture2D" uid="uid://l5udwtm62yij" path="res://defend.png" id="5_0npn6"]
 [ext_resource type="Texture2D" uid="uid://b86hvuxgg1fpy" path="res://allies/lemon.png" id="6_dw4jg"]
 [ext_resource type="Texture2D" uid="uid://cbi700wy2y2wo" path="res://bounce.png" id="6_mhv3b"]
 [ext_resource type="PackedScene" uid="uid://bva2jskq36dxp" path="res://enemy_worm.tscn" id="7_0npn6"]
+[ext_resource type="Texture2D" uid="uid://4r52bcrcemlo" path="res://bg/dark.png" id="8_b1i6x"]
+[ext_resource type="Texture2D" uid="uid://dfuojdtfhyk38" path="res://bg/border.png" id="9_lcjiy"]
+[ext_resource type="Texture2D" uid="uid://um2o0dfl2r7h" path="res://bg/light.png" id="9_sl0w2"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_g4v7s"]
 points = PackedVector2Array(-95, -192, 102, -192, 192, -93, 193, 92, 108, 192, -101, 192, -199, 97, -194, -100)
@@ -39,6 +43,10 @@ size = Vector2(45.008606, 182.43362)
 
 [node name="battle" type="Node2D" unique_id=2068602757]
 script = ExtResource("1_7sfm4")
+
+[node name="Cave" type="Sprite2D" parent="." unique_id=261385597]
+position = Vector2(480, 270)
+texture = ExtResource("2_mhv3b")
 
 [node name="mouse" type="Area2D" parent="." unique_id=909140761]
 position = Vector2(455, 270)
@@ -145,6 +153,15 @@ id = 1
 position = Vector2(30, 31)
 texture = ExtResource("6_dw4jg")
 
+[node name="hpbar1" type="TextureProgressBar" parent="ally1m" unique_id=1077566844]
+offset_left = 142.0
+offset_top = 16.0
+offset_right = 240.0
+offset_bottom = 42.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_b1i6x")
+texture_progress = ExtResource("9_sl0w2")
+
 [node name="ally2m" type="Node2D" parent="." unique_id=654359492]
 
 [node name="name2" type="Label" parent="ally2m" unique_id=2130253157]
@@ -184,6 +201,15 @@ id = 2
 [node name="icon2" type="Sprite2D" parent="ally2m" unique_id=614049074]
 position = Vector2(30, 152)
 texture = ExtResource("6_dw4jg")
+
+[node name="hpbar2" type="TextureProgressBar" parent="ally2m" unique_id=2050627872]
+offset_left = 142.0
+offset_top = 135.0
+offset_right = 240.0
+offset_bottom = 161.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_b1i6x")
+texture_progress = ExtResource("9_sl0w2")
 
 [node name="ally3m" type="Node2D" parent="." unique_id=2042021850]
 
@@ -225,6 +251,15 @@ id = 3
 position = Vector2(31, 272)
 texture = ExtResource("6_dw4jg")
 
+[node name="hpbar3" type="TextureProgressBar" parent="ally3m" unique_id=1271718588]
+offset_left = 141.0
+offset_top = 255.0
+offset_right = 239.0
+offset_bottom = 281.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_b1i6x")
+texture_progress = ExtResource("9_sl0w2")
+
 [node name="ally4m" type="Node2D" parent="." unique_id=99426130]
 
 [node name="name4" type="Label" parent="ally4m" unique_id=1226988516]
@@ -265,14 +300,28 @@ id = 4
 position = Vector2(32, 392)
 texture = ExtResource("6_dw4jg")
 
+[node name="hpbar4" type="TextureProgressBar" parent="ally4m" unique_id=756211893]
+offset_left = 144.0
+offset_top = 373.0
+offset_right = 242.0
+offset_bottom = 399.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_b1i6x")
+texture_progress = ExtResource("9_sl0w2")
+
 [node name="enemy" parent="." unique_id=1590059883 instance=ExtResource("7_0npn6")]
 position = Vector2(330, 242)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1996788257]
-offset_left = 757.0
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(300, -1)
+offset_left = 653.0
 offset_top = 448.0
-offset_right = 950.0
-offset_bottom = 528.0
+offset_right = 953.0
+offset_bottom = 512.0
+follow_focus = true
+draw_focus_border = true
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=844161838]
 layout_mode = 2
@@ -280,6 +329,10 @@ layout_mode = 2
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=673530675]
 layout_mode = 2
 text = "a battle begins!!!"
+
+[node name="Border" type="Sprite2D" parent="." unique_id=1565496124]
+position = Vector2(479, 267)
+texture = ExtResource("9_lcjiy")
 
 [connection signal="mouse_entered" from="mouse" to="mouse" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="mouse" to="mouse" method="_on_mouse_exited"]

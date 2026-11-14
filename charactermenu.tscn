@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dv3tbnlf7iqea"]
+
+[ext_resource type="Texture2D" uid="uid://cc73x70e747nu" path="res://bg/unfinschied.png" id="1_1dtg1"]
+[ext_resource type="Texture2D" uid="uid://ciguoeyd0lhvk" path="res://allies/orchid.png" id="2_cxxkg"]
+
+[node name="Node2D" type="Node2D" unique_id=1558563081]
+
+[node name="Unfinschied" type="Sprite2D" parent="." unique_id=1515603999]
+position = Vector2(480, 270)
+texture = ExtResource("1_1dtg1")
+
+[node name="Orchid" type="Sprite2D" parent="." unique_id=1074477449]
+position = Vector2(42, 52)
+texture = ExtResource("2_cxxkg")
+
+[node name="Orchid2" type="Sprite2D" parent="." unique_id=2146128902]
+position = Vector2(242, 54)
+texture = ExtResource("2_cxxkg")
+
+[node name="Orchid3" type="Sprite2D" parent="." unique_id=420642680]
+position = Vector2(446, 54)
+texture = ExtResource("2_cxxkg")
+
+[node name="Orchid4" type="Sprite2D" parent="." unique_id=974571182]
+position = Vector2(651, 55)
+texture = ExtResource("2_cxxkg")

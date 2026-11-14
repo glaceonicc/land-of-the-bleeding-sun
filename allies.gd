@@ -16,6 +16,6 @@ var Jamie = {
 }
 
 var Glace = {
-	"info": {"name" = "Glace", "sprite" = "res://lemon.png"},
+	"info": {"name" = "Glace", "sprite" = "res://allies/glaceusz.png"},
 	"basestats": {"hp" = 1000.0, "dmg" = 100.0, "rng" = 100.0}
 }

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cnx2r4oymk0ll"]
+
+[ext_resource type="Texture2D" uid="uid://bth7rghxxi0yu" path="res://bg/screan_ui.png" id="1_5enl3"]
+
+[node name="Node2D" type="Node2D" unique_id=1209646712]
+
+[node name="ScreanUi" type="Sprite2D" parent="." unique_id=689952018]
+position = Vector2(480, 270)
+texture = ExtResource("1_5enl3")
