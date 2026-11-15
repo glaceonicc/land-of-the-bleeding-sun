@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b42q4mjglltq"]
+
+[ext_resource type="Script" uid="uid://3h17aqqicodi" path="res://enemy.gd" id="1_0ms6e"]
+[ext_resource type="Texture2D" uid="uid://3o3a22f65jr1" path="res://enemy/openworm.png" id="2_ummu0"]
+[ext_resource type="Texture2D" uid="uid://43pkfempnhrw" path="res://enemy/grok.png" id="2_vex72"]
+[ext_resource type="Texture2D" uid="uid://4r52bcrcemlo" path="res://bg/dark.png" id="3_vex72"]
+[ext_resource type="Texture2D" uid="uid://um2o0dfl2r7h" path="res://bg/light.png" id="4_51wn8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vex72")
+}],
+"loop": 1,
+"name": &"grok",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ummu0")
+}],
+"loop": 1,
+"name": &"openworm",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 18.027756
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 22.203604
+
+[node name="enemy" type="StaticBody2D" unique_id=1590059883 groups=["enemyhit"]]
+script = ExtResource("1_0ms6e")
+enemytype = "Grok"
+health = 8.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=890706742]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"grok"
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=854537685]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="die_area" type="Area2D" parent="." unique_id=1632031376 groups=["enemyhit"]]
+
+[node name="htibox" type="CollisionShape2D" parent="die_area" unique_id=387361051]
+shape = SubResource("CircleShape2D_yf5fn")
+debug_color = Color(0.5659202, 0.5079052, 0.62807155, 0.41960785)
+
+[node name="hpbar" type="TextureProgressBar" parent="." unique_id=638743069]
+offset_left = -18.0
+offset_top = -34.0
+offset_right = 18.0
+offset_bottom = -25.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_vex72")
+texture_progress = ExtResource("4_51wn8")
+
+[connection signal="area_entered" from="die_area" to="." method="_on_die_area_area_entered"]
+[connection signal="area_exited" from="die_area" to="." method="_on_die_area_area_exited"]

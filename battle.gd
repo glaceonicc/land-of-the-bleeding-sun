@@ -7,7 +7,11 @@ var allyscene = load("res://ally.tscn")
 func _ready() -> void:
 	gl.STATE = "pick1"
 	gl.allyID = 1
+	gl.battleid += 1
+	gl.alliesleft = gl.allycount
+	
 	gl.connect("addlog", addlog)
+	gl.connect("new_turn", new_turn)
 	
 	
 	
@@ -63,6 +67,23 @@ func _process(delta: float) -> void:
 		gl.STATE = "allies"
 		gl.current = 1
 		gl.emit_signal("proceed")
+	if gl.enemycount == gl.enemydies:
+		print("win")
+		gl.current = 0
+		gl.hp1 = gl.maxhp1
+		gl.hp2 = gl.maxhp2
+		gl.hp3 = gl.maxhp3
+		gl.hp4 = gl.maxhp4
+		gl.enemycount =0 
+		if gl.battleid == 1:
+			get_tree().change_scene_to_file("res://battle2.tscn")
+		if gl.battleid == 2:
+			get_tree().change_scene_to_file("res://battle3.tscn")
+		if gl.battleid == 3:
+			get_tree().change_scene_to_file("res://battle4.tscn")
+		if gl.battleid == 4:
+			get_tree().quit()
+			
 	
 	$ally1m/hpbar1.max_value = gl.maxhp1
 	$ally2m/hpbar2.max_value = gl.maxhp2
@@ -73,9 +94,17 @@ func _process(delta: float) -> void:
 	$ally2m/hpbar2.value = gl.hp2
 	$ally3m/hpbar3.value = gl.hp3
 	$ally4m/hpbar4.value = gl.hp4
+	
+	if gl.alliesleft == 0:
+		pass
 
 func addlog(text):
 	var logz = Label.new()
 	logz.text = text
 	logz.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	$ScrollContainer/VBoxContainer.add_child(logz)
+
+func new_turn():
+	gl.STATE = "pick1"
+	gl.current = 0
+	gl.allyID = 1

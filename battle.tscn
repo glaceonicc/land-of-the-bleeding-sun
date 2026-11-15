@@ -5,12 +5,13 @@
 [ext_resource type="Script" uid="uid://qjb0ef4h03lr" path="res://area_mouse.gd" id="2_oxp8w"]
 [ext_resource type="PackedScene" uid="uid://bh4mtn3lielhy" path="res://action_button.tscn" id="4_6t8i5"]
 [ext_resource type="Texture2D" uid="uid://l5udwtm62yij" path="res://defend.png" id="5_0npn6"]
+[ext_resource type="Texture2D" uid="uid://dex4ncumol6m7" path="res://range.png" id="6_b1i6x"]
 [ext_resource type="Texture2D" uid="uid://b86hvuxgg1fpy" path="res://allies/lemon.png" id="6_dw4jg"]
-[ext_resource type="Texture2D" uid="uid://cbi700wy2y2wo" path="res://bounce.png" id="6_mhv3b"]
 [ext_resource type="PackedScene" uid="uid://bva2jskq36dxp" path="res://enemy_worm.tscn" id="7_0npn6"]
 [ext_resource type="Texture2D" uid="uid://4r52bcrcemlo" path="res://bg/dark.png" id="8_b1i6x"]
 [ext_resource type="Texture2D" uid="uid://dfuojdtfhyk38" path="res://bg/border.png" id="9_lcjiy"]
 [ext_resource type="Texture2D" uid="uid://um2o0dfl2r7h" path="res://bg/light.png" id="9_sl0w2"]
+[ext_resource type="AudioStream" uid="uid://bct22603537s5" path="res://cavebattle.mp3" id="12_sl0w2"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_g4v7s"]
 points = PackedVector2Array(-95, -192, 102, -192, 192, -93, 193, 92, 108, 192, -101, 192, -199, 97, -194, -100)
@@ -145,7 +146,7 @@ offset_left = 125.0
 offset_top = 64.0
 offset_right = 183.0
 offset_bottom = 122.0
-icon = ExtResource("6_mhv3b")
+icon = ExtResource("6_b1i6x")
 buttontype = "b"
 id = 1
 
@@ -194,7 +195,7 @@ offset_left = 125.0
 offset_top = 185.0
 offset_right = 183.0
 offset_bottom = 243.0
-icon = ExtResource("6_mhv3b")
+icon = ExtResource("6_b1i6x")
 buttontype = "b"
 id = 2
 
@@ -202,10 +203,10 @@ id = 2
 position = Vector2(30, 152)
 texture = ExtResource("6_dw4jg")
 
-[node name="hpbar2" type="TextureProgressBar" parent="ally2m" unique_id=2050627872]
-offset_left = 142.0
+[node name="hpbar2" type="TextureProgressBar" parent="ally2m" unique_id=1234290447]
+offset_left = 108.0
 offset_top = 135.0
-offset_right = 240.0
+offset_right = 206.0
 offset_bottom = 161.0
 nine_patch_stretch = true
 texture_under = ExtResource("8_b1i6x")
@@ -243,7 +244,7 @@ offset_left = 126.0
 offset_top = 305.0
 offset_right = 184.0
 offset_bottom = 363.0
-icon = ExtResource("6_mhv3b")
+icon = ExtResource("6_b1i6x")
 buttontype = "b"
 id = 3
 
@@ -252,10 +253,10 @@ position = Vector2(31, 272)
 texture = ExtResource("6_dw4jg")
 
 [node name="hpbar3" type="TextureProgressBar" parent="ally3m" unique_id=1271718588]
-offset_left = 141.0
-offset_top = 255.0
-offset_right = 239.0
-offset_bottom = 281.0
+offset_left = 107.0
+offset_top = 254.0
+offset_right = 205.0
+offset_bottom = 280.0
 nine_patch_stretch = true
 texture_under = ExtResource("8_b1i6x")
 texture_progress = ExtResource("9_sl0w2")
@@ -292,7 +293,7 @@ offset_left = 127.0
 offset_top = 425.0
 offset_right = 185.0
 offset_bottom = 483.0
-icon = ExtResource("6_mhv3b")
+icon = ExtResource("6_b1i6x")
 buttontype = "b"
 id = 4
 
@@ -311,6 +312,13 @@ texture_progress = ExtResource("9_sl0w2")
 
 [node name="enemy" parent="." unique_id=1590059883 instance=ExtResource("7_0npn6")]
 position = Vector2(330, 242)
+id = 1
+attackmessage = "Openworm digs in!"
+
+[node name="enemy2" parent="." unique_id=1543426547 instance=ExtResource("7_0npn6")]
+position = Vector2(578, 240)
+id = 2
+attackmessage = "Openworm digs in!"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1996788257]
 custom_minimum_size = Vector2(300, 0)
@@ -333,6 +341,10 @@ text = "a battle begins!!!"
 [node name="Border" type="Sprite2D" parent="." unique_id=1565496124]
 position = Vector2(479, 267)
 texture = ExtResource("9_lcjiy")
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=1712475396]
+stream = ExtResource("12_sl0w2")
+autoplay = true
 
 [connection signal="mouse_entered" from="mouse" to="mouse" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="mouse" to="mouse" method="_on_mouse_exited"]

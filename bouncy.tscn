@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b57hox4yw4j62"]
+
+[ext_resource type="Script" uid="uid://dcwhw1evooel0" path="res://bouncy.gd" id="1_3hqqi"]
+[ext_resource type="Texture2D" uid="uid://cghqt2da7creq" path="res://items/VERITYBall_weppon.png" id="1_c6i1v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 15.132746
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1945999375]
+gravity_scale = 0.0
+script = ExtResource("1_3hqqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=559342492]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="VerityBallWeppon" type="Sprite2D" parent="." unique_id=1634621360]
+texture = ExtResource("1_c6i1v")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1440669549]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=38503250]
+shape = SubResource("CircleShape2D_yf5fn")

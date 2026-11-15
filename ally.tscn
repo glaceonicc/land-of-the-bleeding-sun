@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://bey501p0y6vtg"]
 
 [ext_resource type="Script" uid="uid://wc0sf7n71jg5" path="res://ally.gd" id="1_0mrcl"]
+[ext_resource type="Texture2D" uid="uid://dnhq8gngyavra" path="res://attack.png" id="3_1olia"]
 [ext_resource type="Texture2D" uid="uid://wkb14w7v1thy" path="res://area.png" id="3_bgssa"]
+[ext_resource type="Texture2D" uid="uid://l5udwtm62yij" path="res://defend.png" id="4_0hsie"]
+[ext_resource type="Texture2D" uid="uid://dex4ncumol6m7" path="res://range.png" id="5_hymoo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 23.0
@@ -86,3 +89,18 @@ sprite_frames = SubResource("SpriteFrames_yf5fn")
 
 [node name="anim" type="AnimationPlayer" parent="." unique_id=442497630]
 libraries/ = SubResource("AnimationLibrary_q4svr")
+
+[node name="attack" type="Sprite2D" parent="." unique_id=1670705433]
+visible = false
+texture = ExtResource("3_1olia")
+
+[node name="defend" type="Sprite2D" parent="." unique_id=232389601]
+visible = false
+texture = ExtResource("4_0hsie")
+
+[node name="bounce" type="Sprite2D" parent="." unique_id=135088803]
+visible = false
+texture = ExtResource("5_hymoo")
+
+[connection signal="area_entered" from="detect" to="." method="_on_detect_area_entered"]
+[connection signal="area_exited" from="detect" to="." method="_on_detect_area_exited"]
