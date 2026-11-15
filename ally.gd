@@ -34,7 +34,7 @@ func _ready() -> void:
 		gl.hp1 = gl.ally1.get("basestats").get("hp")
 		gl.maxhp1 = gl.ally1.get("basestats").get("hp")
 		naming = gl.ally1.get("info").get("name")
-		damage = gl.ally1.get("basestats").get("dmg")
+		damage = gl.w1.get("stats").get("dmg")
 	if id == 2:
 		$sprite.texture = load(gl.ally2.get("info").get("sprite"))
 		range = gl.ally2.get("basestats").get("rng") * 120
@@ -42,7 +42,7 @@ func _ready() -> void:
 		gl.hp2 = gl.ally2.get("basestats").get("hp")
 		gl.maxhp2 = gl.ally2.get("basestats").get("hp")
 		naming = gl.ally2.get("info").get("name")
-		damage = gl.ally2.get("basestats").get("dmg")
+		damage = gl.w2.get("stats").get("dmg")
 	if id == 3:
 		$sprite.texture = load(gl.ally3.get("info").get("sprite"))
 		range = gl.ally3.get("basestats").get("rng") * 120
@@ -50,7 +50,7 @@ func _ready() -> void:
 		gl.hp3 = gl.ally3.get("basestats").get("hp")
 		gl.maxhp3 = gl.ally3.get("basestats").get("hp")
 		naming = gl.ally3.get("info").get("name")
-		damage = gl.ally3.get("basestats").get("dmg")
+		damage = gl.w3.get("stats").get("dmg")
 	if id == 4:
 		$sprite.texture = load(gl.ally4.get("info").get("sprite"))
 		range = gl.ally4.get("basestats").get("rng") * 120
@@ -58,7 +58,7 @@ func _ready() -> void:
 		gl.hp4 = gl.ally4.get("basestats").get("hp")
 		gl.maxhp4 = gl.ally4.get("basestats").get("hp")
 		naming = gl.ally4.get("info").get("name")
-		damage = gl.ally4.get("basestats").get("dmg")
+		damage  =gl.w4.get("stats").get("dmg")
 
 func _physics_process(delta: float) -> void:
 	if aiming == true and action == "bounce":
@@ -66,6 +66,9 @@ func _physics_process(delta: float) -> void:
 		$aim/sprite.visible = true
 	elif aiming == true and action == "bounceattack":
 		bounceattackaim()
+		$aim/sprite.visible = true
+	elif aiming == true and action == "shootattack":
+		shootattackaim()
 		$aim/sprite.visible = true
 	if position.distance_to(get_global_mouse_position()) > range:
 		inrange = false
@@ -116,17 +119,33 @@ func attack():
 	if id == gl.allyID and presesd == false:
 		presesd = true
 		$attack.visible = true
-		if gl.w1.get("stats").get("type") == "meele":
-			action = "bounceattack"
-			aiming = true
-		if gl.w2.get("stats").get("type") == "meele":
-			action = "bounceattack"
-			aiming = true
-		if gl.w3.get("stats").get("type") == "meele":
-			action = "bounceattack"
-			aiming = true
-		if gl.w4.get("stats").get("type") == "meele":
-			action = "bounceattack"
+		if id == 1:
+			if gl.w1.get("stats").get("type") == "meele":
+				action = "bounceattack"
+				aiming = true
+			if gl.w1.get("stats").get("type") == "range":
+				action = "shootattack"
+				aiming = true
+		if id == 2:
+			if gl.w2.get("stats").get("type") == "meele":
+				action = "bounceattack"
+				aiming = true
+			if gl.w2.get("stats").get("type") == "range":
+				action = "shootattack"
+				aiming = true
+		if id == 3:
+			if gl.w3.get("stats").get("type") == "meele":
+				action = "bounceattack"
+				aiming = true
+			if gl.w3.get("stats").get("type") == "range":
+				action = "shootattack"
+				aiming = true
+		if id == 4:
+			if gl.w4.get("stats").get("type") == "meele":
+				action = "bounceattack"
+				aiming = true
+			if gl.w4.get("stats").get("type") == "range":
+				action = "shootattack"
 			aiming = true
 		
 
@@ -177,7 +196,9 @@ func proceed():
 			gl.emit_signal("hit", damage)
 		if action == "shootattack":
 			gl.emit_signal("addlog", naming + " shoots!")
-			var tween = get_tree().create_tween()
+			var ball = ballscene.instantiate()
+			ball.look_at($aim.global_position)
+			add_child(ball)
 			
 			gl.emit_signal("hit", damage)
 		if gl.current < gl.allycount:
@@ -195,6 +216,13 @@ func bounceattackaim():
 			aiming = false
 			gl.allyID += 1
 
+func shootattackaim():
+	$aim/sprite.visible = true
+	if gl.inarena == true and inwrange == true:
+		$aim.global_position = get_global_mouse_position()
+		if Input.is_action_just_pressed("click"):
+			aiming = false
+			gl.allyID += 1
 
 
 

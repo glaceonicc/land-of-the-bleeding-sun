@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c58en7eowr5rg"]
 
 [ext_resource type="Script" uid="uid://jxuix5wsf2yq" path="res://battle.gd" id="1_1essy"]
-[ext_resource type="Texture2D" uid="uid://cep3vevpsn87n" path="res://bg/cave.png" id="2_ixkfn"]
+[ext_resource type="Texture2D" uid="uid://comq1lwlh8kh6" path="res://bg/city.png" id="2_arx7s"]
 [ext_resource type="Script" uid="uid://qjb0ef4h03lr" path="res://area_mouse.gd" id="3_arx7s"]
 [ext_resource type="Texture2D" uid="uid://l5udwtm62yij" path="res://defend.png" id="4_onlny"]
 [ext_resource type="PackedScene" uid="uid://bh4mtn3lielhy" path="res://action_button.tscn" id="5_aqc3h"]
@@ -48,7 +48,7 @@ script = ExtResource("1_1essy")
 
 [node name="Cave" type="Sprite2D" parent="." unique_id=261385597]
 position = Vector2(480, 270)
-texture = ExtResource("2_ixkfn")
+texture = ExtResource("2_arx7s")
 
 [node name="mouse" type="Area2D" parent="." unique_id=909140761]
 position = Vector2(455, 270)

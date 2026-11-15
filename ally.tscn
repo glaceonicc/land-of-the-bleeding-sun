@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://wkb14w7v1thy" path="res://area.png" id="3_bgssa"]
 [ext_resource type="Texture2D" uid="uid://l5udwtm62yij" path="res://defend.png" id="4_0hsie"]
 [ext_resource type="Texture2D" uid="uid://dex4ncumol6m7" path="res://range.png" id="5_hymoo"]
+[ext_resource type="AudioStream" uid="uid://dfaqayiongjlk" path="res://freesound_community-portal-phase-jump-6355.mp3" id="6_0hsie"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 23.0
@@ -101,6 +102,9 @@ texture = ExtResource("4_0hsie")
 [node name="bounce" type="Sprite2D" parent="." unique_id=135088803]
 visible = false
 texture = ExtResource("5_hymoo")
+
+[node name="attack2" type="AudioStreamPlayer" parent="." unique_id=1847395022]
+stream = ExtResource("6_0hsie")
 
 [connection signal="area_entered" from="detect" to="." method="_on_detect_area_entered"]
 [connection signal="area_exited" from="detect" to="." method="_on_detect_area_exited"]

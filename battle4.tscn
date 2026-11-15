@@ -111,10 +111,6 @@ scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_mhv3b")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
-[node name="Defend" type="Sprite2D" parent="." unique_id=1720819443]
-position = Vector2(936, 259)
-texture = ExtResource("4_56f4f")
-
 [node name="ally1m" type="Node2D" parent="." unique_id=276674567]
 
 [node name="name1" type="Label" parent="ally1m" unique_id=909799211]

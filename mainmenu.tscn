@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bqvoypiuea0ue"]
+
+[ext_resource type="Texture2D" uid="uid://m3wtcemrcssa" path="res://bg/logo.png" id="1_cmhrf"]
+[ext_resource type="Script" uid="uid://dqio88rbncsi" path="res://mainmenu.gd" id="1_d2nv2"]
+
+[node name="Node2D" type="Node2D" unique_id=895406791]
+script = ExtResource("1_d2nv2")
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=1463397651]
+position = Vector2(480, 270)
+texture = ExtResource("1_cmhrf")
+
+[node name="Button" type="Button" parent="." unique_id=727098931]
+offset_left = 395.0
+offset_top = 315.0
+offset_right = 512.0
+offset_bottom = 386.0
+text = "play"
+
+[node name="Label" type="Label" parent="." unique_id=608365860]
+offset_left = 7.0
+offset_top = 360.0
+offset_right = 512.0
+offset_bottom = 539.0
+text = "verity -art
+cuba - bg and character art
+glace - programming, music, some art and a bunch of other stuffs
+
+emotional support:
+cotton, szyszek, salad, dorya, wujek marcin (ten czwarty), amelia
+freaky: freaktonio"
+
+[node name="Label2" type="Label" parent="." unique_id=1957101824]
+offset_left = 662.0
+offset_top = 489.0
+offset_right = 1167.0
+offset_bottom = 642.0
+text = "this game is stupid and doesnt work,
+but we tried our best"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
