@@ -16,6 +16,8 @@ var shield = false
 var kil =false
 var presesd = false
 
+var ballscene = load("res://bouncy.tscn")
+
 func _ready() -> void:
 	gl.connect("attack", attack)
 	gl.connect("defend", defend)
@@ -173,7 +175,11 @@ func proceed():
 			$anim.play("anim1")
 			await $anim.animation_finished
 			gl.emit_signal("hit", damage)
-		
+		if action == "shootattack":
+			gl.emit_signal("addlog", naming + " shoots!")
+			var tween = get_tree().create_tween()
+			
+			gl.emit_signal("hit", damage)
 		if gl.current < gl.allycount:
 			gl.current += 1
 		else:
